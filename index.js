@@ -6,7 +6,7 @@
         + If a plane takes off, its `isFlying` property gets set to true.
         + If a plane lands, its `isFlying` property gets set to false.
 */
-
+ 
 // EXAMPLE SOLUTION CODE:
 class Airplane {
   constructor(name) {
@@ -42,6 +42,28 @@ class Airplane {
 
 class Person {
 
+    constructor(name, age) {
+      this.name = name,
+      this.age = age,
+      this.stomach = [];
+    }
+
+    eat(someFood) {
+      if (this.stomach.length < 10) {
+        this.stomach.push(someFood);
+      }
+    }
+
+    poop() {
+      if (this.stomach.length === 10) {
+        this.stomach = [];
+      }
+    }
+
+    toString() {
+      return `${this.name}, ${this.age}`
+    }
+
 }
 
 /*
@@ -57,8 +79,31 @@ class Person {
     - A car which runs out of `fuel` while driving can't drive any more distance:
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
-
+// do we use a "," or a ";" below
 class Car {
+  constructor(model, milesPerGallon) {
+    this.model = model;
+    this.milesPerGallon = milesPerGallon;
+    this.tank = 0;
+    this.odometer = 0
+  }
+
+  fill(gallons) {
+    this.tank += gallons;
+  }
+
+  drive(distance) {
+    this.odometer += distance;
+    let totalFuel = this.tank*this.milesPerGallon;
+    totalFuel -= distance;
+    this.tank = totalFuel / this.milesPerGallon;
+        if (this.tank <= 0) {
+            this.odometer -= 1;
+            this.tank = 0;
+            distance = 0;
+            return `I ran out of fuel at ${this.odometer}.`;
+        }
+  }
 
 }
 
@@ -75,6 +120,11 @@ class Car {
         + {name} and {location} of course come from the instance's own properties.
 */
 class Lambdasian {
+
+  constructor({name, age, location})
+    this.name = name;
+    this.age = age;
+    this.location = location;
 
 }
 
